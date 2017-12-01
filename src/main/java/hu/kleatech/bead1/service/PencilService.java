@@ -15,11 +15,17 @@ public class PencilService {
 	@Autowired
 	private PencilRepository pencilRepository;
 
+	public Pencil addPencil(Pencil pencil) {
+		return pencilRepository.save(pencil);
+	}
 	public Pencil addPencil(Color color, String brand, int length, int sharpness, PencilCase pc) {
 		return pencilRepository.save(new Pencil(color, brand, length, sharpness, pc));
 	}
 	public void removePencil(Pencil pencil) {
 		pencilRepository.delete(pencil);
+	}
+	public void removePencil(Long id) {
+		pencilRepository.delete(id);
 	}
 	public void sharpenPencil(Pencil pencil, int percentage) {
 		if(pencil.getSharpness() + percentage > 100) {

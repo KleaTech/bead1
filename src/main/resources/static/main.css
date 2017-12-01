@@ -1,0 +1,71 @@
+body {
+    background: #286AA7 url('logo.png') no-repeat fixed;
+    background-size: 40%;
+    background-position: 50% 20%;
+}
+
+#maindiv {
+    background: transparent;
+    position: relative;
+    width: 1100px;
+    margin:0 auto;
+}
+
+#headerpic {
+    width: 1100px;
+}
+
+#menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menuitem:link, .menuitem:visited {
+    display: block;
+    width: 358px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #CF4229;
+    text-align: center;
+    padding: 4px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.menuitem:active, .menuitem:hover {
+    background-color: #F2CA30;
+}
+
+#spacer {
+    display:block;
+    height:10vh;
+}
+
+#bodydiv {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.pencil {
+    margin-bottom: 20px;
+}
+
+.pencilcase {
+    margin-bottom: 20px;
+}
+
+.left {
+    display:table-cell;
+}
+
+.right {
+    display:table-cell;
+}
+
+.newfield {
+    padding-left: 20px;
+}
+
+.newpencilbutton {
+    display: block;
+}

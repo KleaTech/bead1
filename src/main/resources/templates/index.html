@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org"
+          lang="en"
+          xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+	<title>Bead1 Főoldal</title>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link href="../static/main.css" th:href="@{/main.css}" rel="stylesheet" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../static/main.js" th:src="@{/main.js}"></script>
+    </head>
+    <body>
+	<div id="maindiv">
+	    <div><img src="../static/header.png" th:src="@{/header.png}" id="headerpic" alt="Címsor kép"/></div>
+	    <div>
+		<ul id="menu">
+		    <li style="float:left"><a class="menuitem" href="index.html">Login</a></li>
+		    <li style="float:left"><a class="menuitem" href="main.html">Main Page</a></li>
+		    <li style="float:left"><a class="menuitem" href="placeholder.html">Placeholder</a></li>
+		</ul>
+	    </div>
+	    <div id="spacer"/>
+
+	    <div id="bodydiv">
+		<h1 id="pencilcaseheader">Pencil cases</h1>
+		<button id="newpencilcasebutton">New pencil case</button>
+		<div class="pencilcase" th:each = "PencilCase : ${allPencilCase}">
+		    <button class="newpencilbutton" onclick="newPencil(this)">New pencil</button>
+		    <div class="newfield" style="display:none">
+			<h1>New pencil</h1>
+			<form class="newform">
+			    <input type="hidden" name="pencilCaseId" th:value="${PencilCase.id}"/>
+			    <select name="color">
+				<option th:each="Color:${allColor}" th:value="${Color?.toString()}" th:text="${Color?.toString()}">Select color</option>
+			    </select><br/>
+			    <input type="text" name="brand" value="Brand"/><br/>
+			    Length:
+			    <input type="range" name="length"/><br/>
+			    Sharpness:
+			    <input type="range" name="sharpness"/><br/>
+			    <input type="button" value="Add" onclick="addPencil(this)"/>
+			</form>
+		    </div>
+		    <div class="pencil" th:each = "Pencil : ${PencilCase?.pencils}">
+			<input type="hidden" name="pencilId" th:value="${Pencil.id}"/>
+			<div th:text = "${Pencil?.color}">Color</div>
+			<div th:text = "${Pencil?.brand}">Brand</div>
+			<div class="left">Length: </div>
+			<div class="right" th:text = "${Pencil?.length}">Length</div>
+			<div/>
+			<div class="left">Sharpness: </div>
+			<div class="right" th:text = "${Pencil?.sharpness}">Sharpness</div>
+			<div/>
+			<button class="deletebutton" onclick="deletePencil(this)">Delete</button>
+		    </div>
+		</div>
+	    </div>
+	</div>
+    </body>
+</html>

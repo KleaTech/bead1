@@ -45,6 +45,9 @@ public class PencilCase implements Serializable {
 	public List<Pencil> getPencils() {
 		return Collections.unmodifiableList(pencils);
 	}
+	public Long getId() {
+		return id;
+	}
 	@Override
 	public int hashCode() {
 		int hash = 7;

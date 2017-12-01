@@ -56,6 +56,9 @@ public class Pencil implements Serializable {
 	public PencilCase getPencilCase() {
 		return pencilCase;
 	}
+	public Long getId() {
+		return id;
+	}
 	public void setLength(int length) {
 		this.length = length;
 	}
