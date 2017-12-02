@@ -16,7 +16,7 @@
 	    <div>
 		<ul id="menu">
 		    <li style="float:left"><a class="menuitem" href="index.html">Login</a></li>
-		    <li style="float:left"><a class="menuitem" href="main.html">Main Page</a></li>
+		    <li style="float:left"><a class="menuitem" href="index.html">Main Page</a></li>
 		    <li style="float:left"><a class="menuitem" href="placeholder.html">Placeholder</a></li>
 		</ul>
 	    </div>
@@ -24,7 +24,8 @@
 
 	    <div id="bodydiv">
 		<h1 id="pencilcaseheader">Pencil cases</h1>
-		<button id="newpencilcasebutton">New pencil case</button>
+		<button id="newpencilcasebutton" onclick="addPencilCase()">New pencil case</button>
+		<br/>
 		<div class="pencilcase" th:each = "PencilCase : ${allPencilCase}">
 		    <button class="newpencilbutton" onclick="newPencil(this)">New pencil</button>
 		    <div class="newfield" style="display:none">
@@ -53,6 +54,14 @@
 			<div class="right" th:text = "${Pencil?.sharpness}">Sharpness</div>
 			<div/>
 			<button class="deletebutton" onclick="deletePencil(this)">Delete</button>
+			<button class="sharpenbutton" onclick="sharpenPencil(this)">Sharpen</button>
+			<div/>
+			<button class="usebutton" onclick="usePencil(this)">Use</button>
+			<button class="brakeButton" onclick="brakePencil(this)">Brake</button>
+			<div class="percentagefield" style="display:none">
+			    <input type="range" name="percentage"/>
+			    <button class="sendbutton" onclick="sendPencil(this)">Send</button>
+			</div>
 		    </div>
 		</div>
 	    </div>

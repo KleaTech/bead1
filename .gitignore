@@ -1,5 +1,7 @@
+logs/
 target/
 !.mvn/wrapper/maven-wrapper.jar
+nbactions.xml
 
 ### STS ###
 .apt_generated

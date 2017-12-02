@@ -28,23 +28,27 @@ public class PencilService {
 		pencilRepository.delete(id);
 	}
 	public void sharpenPencil(Pencil pencil, int percentage) {
-		if(pencil.getSharpness() + percentage > 100) {
-			pencil.setSharpness(100);
-			pencil.setLength(pencil.getLength() - (percentage-100));
-		}
-		else {
-			pencil.setSharpness(percentage);
-		}
+		pencil.setLength(pencil.getLength()-percentage/10);
+		pencil.setSharpness((pencil.getSharpness()+percentage)>100?100:pencil.getSharpness()+percentage);
 		pencilRepository.save(pencil);
+	}
+	public void sharpenPencil(Long id, int percentage) {
+		sharpenPencil(pencilRepository.findOne(id), percentage);
 	}
 	public void usePencil(Pencil pencil, int percentage) {
 		if(pencil.getSharpness() - percentage < 0) pencil.setSharpness(0);
 		else pencil.setSharpness(pencil.getSharpness()-percentage);
 		pencilRepository.save(pencil);
 	}
+	public void usePencil(Long id, int percentage) {
+		usePencil(pencilRepository.findOne(id), percentage);
+	}
 	public void breakPencil(Pencil pencil) {
 		pencil.setSharpness(0);
 		pencilRepository.save(pencil);
+	}
+	public void breakPencil(Long id) {
+		breakPencil(pencilRepository.findOne(id));
 	}
 	public List<Pencil> getPencils(Color color, String brand) {
 		return pencilRepository.findByColorAndBrand(color, brand);
